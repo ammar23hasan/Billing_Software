@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { assets } from '../../assets/assets';
 import toast from 'react-hot-toast';
 import { AppContext } from '../../context/AppContext';
@@ -6,46 +6,49 @@ import { addCategory } from '../../services/categoryService'; // <-- ضيف مك
 
 const CategoryForm = () => {
   const { categories, setCategories } = useContext(AppContext);
-  const [loading, setLoading] = React.useState(false);
-  const [image, setImage] = React.useState(null);
-  const [data, setData] = React.useState({
+  const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState(null);
+  const [data, setData] = useState({
     name: "",
     description: "",
     bgColor: "#ffffff"
   });
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
+  // تابع التغيير في الحقول
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   };
 
+  // تابع إرسال البيانات
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
 
+    // تحقق من وجود صورة
     if (!image) {
       toast.error("Select image for category");
       setLoading(false);
       return;
     }
 
+    // إعداد البيانات لتجهيزها للإرسال
     const formData = new FormData();
     formData.append("category", JSON.stringify(data));
     formData.append("file", image);
 
     try {
-      const response = await addCategory(formData);
+      const response = await addCategory(formData); // تأكد من أن دالة addCategory تُمثل الوظيفة المناسبة
       if (response.status === 201) {
+        // تحديث القائمة
         setCategories([...categories, response.data]);
         toast.success("Category created successfully");
+
+        // إعادة تعيين الحقول بعد نجاح الإرسال
         setData({
           name: "",
           description: "",
-          bgColor: "#2c2c2c"
+          bgColor: "#ffffff"
         });
         setImage(null);
       }
@@ -63,11 +66,12 @@ const CategoryForm = () => {
         <div className="card col-md-8 form-container">
           <div className="card-body">
             <form onSubmit={onSubmitHandler}>
+              {/* حقل الصورة */}
               <div className="mb-3">
                 <label htmlFor="image" className="form-label">
                   <img
                     src={image ? URL.createObjectURL(image) : assets.upload}
-                    alt=""
+                    alt="Category"
                     width={48}
                   />
                 </label>
@@ -81,6 +85,7 @@ const CategoryForm = () => {
                 />
               </div>
 
+              {/* حقل الاسم */}
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">Name</label>
                 <input
@@ -91,9 +96,11 @@ const CategoryForm = () => {
                   placeholder="Enter category name"
                   onChange={onChangeHandler}
                   value={data.name}
+                  required
                 />
               </div>
 
+              {/* حقل الوصف */}
               <div className="mb-3">
                 <label htmlFor="description" className="form-label">Description</label>
                 <textarea
@@ -104,12 +111,13 @@ const CategoryForm = () => {
                   placeholder="Write content here.."
                   onChange={onChangeHandler}
                   value={data.description}
+                  required
                 />
               </div>
 
+              {/* حقل لون الخلفية */}
               <div className="mb-3">
                 <label htmlFor="bgColor" className="form-label">Background color</label>
-                <br />
                 <input
                   type="color"
                   name="bgColor"
@@ -119,6 +127,7 @@ const CategoryForm = () => {
                 />
               </div>
 
+              {/* زر الإرسال */}
               <button
                 type="submit"
                 disabled={loading}

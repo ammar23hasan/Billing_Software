@@ -16,7 +16,7 @@ const Login = () => {
   });
 
   const onChangeHandler = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target;  
     setData((prev) => ({ ...prev, [name]: value }));
   };
 

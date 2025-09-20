@@ -1,11 +1,11 @@
 .explore-container {
     display: flex;
     gap: 20px;
-    height: calc(100vh - 5rem);
+    min-height: 100vh; /* غطّي كل الشاشة */
     box-sizing: border-box;
     padding: 20px;
     background-color: #2C3335;
-} 
+}
 
 .left-column {
     flex: 0.7;

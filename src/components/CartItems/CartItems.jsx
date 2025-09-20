@@ -16,7 +16,7 @@ const CartItems = () => {
               <div className="d-flex justify-content-between align-items-center mb-2">
                 <h6 className="mb-0 text-light">{item.name}</h6>
                 <p className="mb-0 text-light">
-                  ₹{(item.price * item.quantity).toFixed(2)}
+                  ${(item.price * item.quantity).toFixed(2)}
                 </p>
               </div>
               <div className="d-flex justify-content-between align-items-center">

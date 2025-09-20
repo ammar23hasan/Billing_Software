@@ -1,0 +1,33 @@
+.cart-summary-container {
+  background: #2b2b2b;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.payment-card {
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  color: #fff;
+}
+
+.payment-element {
+  padding: 12px;
+  background: #2a2a2a;
+  border-radius: 8px;
+}
+/* 🔹 خلفية الصفحة كاملة */
+body {
+  background-color: #1e1e1e; /* اللون الغامق */
+  color: #fff; /* النص أبيض ليتباين */
+  margin: 0;
+  padding: 0;
+}
+
+/* 🔹 خلي الكارت يبين فوق الخلفية */
+.cart-summary-container {
+  background: #2b2b2b;
+  padding: 16px;
+  border-radius: 12px;
+}
+

@@ -6,6 +6,13 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+/* هذا لازم يكون في App.css أو index.css */
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #1e1e1e; /* الخلفية الغامقة */
+  color: #fff; /* النص أبيض */
+}
 
 
 }

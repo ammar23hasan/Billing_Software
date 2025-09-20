@@ -79,7 +79,9 @@ const AppContextProvider = ({ children }) => {
 
     loadCategories();
   }, []);
-
+const clearCart=()=>{
+  setCartItems([]);
+}
   return (
     <AppContext.Provider
       value={{
@@ -95,6 +97,7 @@ const AppContextProvider = ({ children }) => {
         increaseQuantity,
         decreaseQuantity,
         removeItem,
+        clearCart
       }}
     >
       {children}

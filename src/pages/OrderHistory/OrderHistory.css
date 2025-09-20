@@ -1,0 +1,77 @@
+.orders-history-container {
+  padding: 30px;
+  background-color: #1f2326;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.orders-history-container h2 {
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* جدول */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #2c3335;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.orders-table th {
+  font-weight: 600;
+  background-color: #111;
+  color: #fff;
+  text-align: left;
+  padding: 14px;
+}
+
+.orders-table td {
+  vertical-align: middle;
+  padding: 12px 14px;
+  border-bottom: 1px solid #444;
+  color: #ddd;
+}
+
+/* تمييز الصفوف */
+.orders-table tr:nth-child(even) {
+  background-color: #2c2f32;
+}
+
+.orders-table tr:hover {
+  background-color: #3a3f44;
+  transition: 0.2s ease-in-out;
+}
+
+/* حالة الدفع */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-badge.completed {
+  background-color: #198754; /* أخضر */
+  color: #fff;
+}
+
+.status-badge.pending {
+  background-color: #ffc107; /* أصفر */
+  color: #000;
+}
+
+.text-muted {
+  color: #aaa;
+}
+.orders-history-container small.text-muted {
+  color: #7e7e7e !important; /* رمادي فاتح */
+  font-size: 0.9em;
+}

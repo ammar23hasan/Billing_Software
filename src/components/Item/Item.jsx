@@ -22,7 +22,7 @@ const Item=({itemName,itemPrice,itemImage,itemId})=>{
             </div>
            <div className="flex-grow-1 ms-2">
             <h6 className="mb-1 text-light">{itemName}</h6>
-            <p className="mb-0 fw-blod text-light">{itemPrice}</p>
+            <p className="mb-0 fw-bold text-light">{itemPrice}</p>
            </div>
            <div className="d-flex flex-column justify-content-between align-items-center ms-3" 
            style={{height:"100%"}}

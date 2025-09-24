@@ -78,6 +78,7 @@ const UsersForm = ({ setUsers }) => {
                   placeholder="Jhon Doe"
                   onChange={onChangeHandler}
                   value={data.name}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -90,6 +91,7 @@ const UsersForm = ({ setUsers }) => {
                   placeholder="yourname@example.com"
                   onChange={onChangeHandler}
                   value={data.email}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -102,6 +104,7 @@ const UsersForm = ({ setUsers }) => {
                   placeholder="*********"
                   onChange={onChangeHandler}
                   value={data.password}
+                  required
                 />
               </div>
               <button type="submit" className="btn btn-warning w-100" disabled={loading}>

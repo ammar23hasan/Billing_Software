@@ -10,9 +10,9 @@ const OrderHistory = () => {
     const fetchOrders = async () => {
       try {
         const response = await latestOrders();
-        setOrders(response.data);
+        setOrders(response.data || []);
       } catch (error) {
-        console.log(error);
+        console.log("Error fetching orders:", error);
       } finally {
         setLoading(false);
       }
@@ -21,17 +21,22 @@ const OrderHistory = () => {
   }, []);
 
   const formatDate = (dateString) => {
-    const options = {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    };
-    return new Date(dateString).toLocaleDateString("en-US", options);
-  };
+  if (!dateString) return "-";
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) return "Invalid Date";
+
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(date);
+};
+
 
   const formatItems = (items = []) => {
+    if (!items.length) return "No items";
     return items.map((item) => `${item.name} x ${item.quantity}`).join(", ");
   };
 
@@ -67,15 +72,15 @@ const OrderHistory = () => {
           <tbody>
             {orders.map((order, index) => (
               <tr key={order.order_id || index}>
-                <td>{order.order_id}</td>
+                <td>{order.order_id || "N/A"}</td>
                 <td>
-                  {order.customer_name}
+                  {order.customer_name || "Unknown"}
                   <br />
-                  <small className="text-muted">{order.phone_number}</small>
+                  <small className="text-muted">{order.phone_number || "-"}</small>
                 </td>
                 <td>{formatItems(order.items)}</td>
-                <td>${order.grand_total}</td>
-                <td>{order.payment_method}</td>
+                <td>${order.grand_total ?? 0}</td>
+                <td>{order.payment_method || "N/A"}</td>
                 <td>
                   <span
                     className={`status-badge ${
@@ -87,7 +92,7 @@ const OrderHistory = () => {
                     {order.payment_details?.status || "PENDING"}
                   </span>
                 </td>
-                <td>{formatDate(order.createdAt)}</td>
+                <td>{order.createdAt ? formatDate(order.createdAt) : "-"}</td>
               </tr>
             ))}
           </tbody>

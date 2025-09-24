@@ -10,8 +10,8 @@ const DisplayItems = ({ selectedCategory }) => {
 
   const filteredItems = itemsData
     .filter(item => {
-      if (!selectedCategory) return true;
-      return item.categoryid === selectedCategory.categoryid;
+      if (!selectedCategory || selectedCategory === "") return true; // عرض كل العناصر إذا لم يتم اختيار فئة
+      return item.categoryid === selectedCategory; // قارن مباشرة بالـ ID
     })
     .filter(item => 
       item.name.toLowerCase().includes(searchText.toLowerCase())
@@ -27,16 +27,15 @@ const DisplayItems = ({ selectedCategory }) => {
 
       <div className="row g-3">
         {filteredItems.map((item, index) => (
-  <div key={item.itemId || index} className="col-md-4 col-sm-6">
-    <Item
-      itemName={item.name}
-      itemPrice={item.price}
-      itemImage={item.img_url}
-      itemId={item.itemId}
-    />
-  </div>
-))}
-
+          <div key={item.itemId || index} className="col-md-4 col-sm-6">
+            <Item
+              itemName={item.name}
+              itemPrice={item.price}
+              itemImage={item.img_url}
+              itemId={item.itemId}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

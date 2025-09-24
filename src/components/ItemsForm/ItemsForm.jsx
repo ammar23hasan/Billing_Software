@@ -140,6 +140,7 @@ const ItemsForm = () => {
                         <option
                           key={index}
                           value={category.categoryId || category.categoryid}
+                        required
                         >
                           {category.name}
                         </option>

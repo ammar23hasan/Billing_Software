@@ -1,12 +1,18 @@
 .login-background {
 
 min-height: 100vh; 
-background-size: cover; 
 display: flex; 
 justify-content: center; 
 align-items: center;
+padding: 20px;
     background:linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('../../assets/login.jpg') no-repeat center center fixed;
     background-position: center;
+}
+.login-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+  overflow: hidden;
 }
 .card{
 
@@ -16,5 +22,26 @@ max-width: 480px;
 border: none;
 box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 
-}م
+}
 .card-body{ padding: 2rem; }
+.card-title {
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.card-text {
+  margin-bottom: 1.25rem;
+  color: #6c757d;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+}
+
+.btn-dark {
+  background: linear-gradient(90deg, #343a40, #212529);
+  border: none;
+  border-radius: 8px;
+}

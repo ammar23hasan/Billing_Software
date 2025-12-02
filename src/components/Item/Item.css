@@ -1,15 +1,17 @@
-.item-card:hover{
-
-    transform: translateY(-5px);
-    transition: transform 0.3s ease;
-    box-shadow :0 4px 8px rgba (0,0,0,0.2);
+.item-card {
+  border-radius: 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.item-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
 
-item-image{
-
-    width: 80px;
-    height: 80px;
-    border-radius: 10px ;
-    border: 3px solid white;
+.item-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  object-fit: cover;
 }

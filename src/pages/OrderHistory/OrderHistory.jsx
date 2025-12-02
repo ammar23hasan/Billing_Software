@@ -92,7 +92,7 @@ const OrderHistory = () => {
                     {order.payment_details?.status || "PENDING"}
                   </span>
                 </td>
-                <td>{order.createdAt ? formatDate(order.createdAt) : "-"}</td>
+                <td>{order.created_at ? formatDate(order.created_at) : "-"}</td>
               </tr>
             ))}
           </tbody>

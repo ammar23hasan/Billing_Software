@@ -1,5 +1,8 @@
 .navbar {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(90deg,#0f1720,#111827);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 
 .navbar-brand {
@@ -7,19 +10,32 @@
     font-size: 1.5rem;
 }
 
+.navbar-brand img {
+    height: 48px;
+}
+
 .nav-link {
     font-weight: 600;
     text-transform: uppercase;
     margin-right: 1rem;
-    transition: color 0.3s;
+    color: rgba(255,255,255,0.85);
+    transition: color 0.2s, transform 0.12s;
 }
 
 .nav-link:hover {
-    color: #ccc !important;
+    color: #ffc107 !important;
+    transform: translateY(-2px);
 }
 
 .nav-link.active {
     color: #fff !important;
+}
+
+.nav-link.fw-bold,
+.nav-link.text-warning {
+    color: #ffc107 !important;
+    text-decoration: underline;
+    text-underline-offset: 6px;
 }
 
 .form-control {
@@ -28,4 +44,14 @@
 
 .btn-outline-light {
     border-radius: 0 20px 20px 0;
+}
+
+/* Avatar dropdown tweaks */
+.navbar .dropdown-menu {
+    background: #0b0d0f;
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.navbar .dropdown-item {
+    color: #e9ecef;
 }

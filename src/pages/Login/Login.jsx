@@ -4,6 +4,7 @@ import React, { useState, useContext } from 'react';
 import './Login.css';
 import { AppContext } from '../../context/AppContext';
 import { login } from '../../services/AuthService'; // تأكد من مسار import الصحيح
+import { assets } from '../../assets/assets'; // إضافة استيراد الصور
 
 const Login = () => {
   const { setAuthData } = useContext(AppContext);
@@ -47,10 +48,19 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-light d-flex align-items-center justify-content-center vh-100 login-background">
-      <div className="card shadow-lg w-100" style={{ maxWidth: '480px' }}>
+    // استخدم خلفية ملوّنة مع صورة من assets (inline style)
+    <div
+      className="bg-light d-flex align-items-center justify-content-center vh-100 login-background"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${assets.Login})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="card shadow-lg w-100 login-card" style={{ maxWidth: '480px', background: 'rgba(255,255,255,0.95)' }}>
         <div className="card-body">
           <div className="text-center">
+            <img src={assets.logo} alt="logo" style={{ width: 120, marginBottom: 8 }} />
             <h1 className="card-title">Sign in</h1>
             <p className="card-text text-muted">Sign in below to access your account</p>
           </div>

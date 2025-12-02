@@ -11,8 +11,12 @@
   text-align: left;
 }
 
+/* ✅ Scroll عمودي وأفقي للجدول */
 .table-responsive {
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: 100vh; /* ارتفاع أقصى للجدول */
+  border-radius: 8px;
 }
 
 /* جدول */
@@ -24,12 +28,16 @@
   overflow: hidden;
 }
 
-.orders-table th {
-  font-weight: 600;
+/* ✅ Header ثابت */
+.orders-table thead th {
+  position: sticky;
+  top: 0;
   background-color: #111;
   color: #fff;
+  font-weight: 600;
   text-align: left;
   padding: 14px;
+  z-index: 2;
 }
 
 .orders-table td {
@@ -71,6 +79,7 @@
 .text-muted {
   color: #aaa;
 }
+
 .orders-history-container small.text-muted {
   color: #7e7e7e !important; /* رمادي فاتح */
   font-size: 0.9em;

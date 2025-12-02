@@ -8,13 +8,15 @@ const DisplayItems = ({ selectedCategory }) => {
   const { itemsData } = useContext(AppContext);
   const [searchText, setSearchText] = useState("");
 
-  const filteredItems = itemsData
+  const isAllSelected = selectedCategory === "" || selectedCategory === null || String(selectedCategory).toLowerCase() === 'all';
+
+  const filteredItems = (itemsData || [])
     .filter(item => {
-      if (!selectedCategory || selectedCategory === "") return true; // عرض كل العناصر إذا لم يتم اختيار فئة
-      return item.categoryid === selectedCategory; // قارن مباشرة بالـ ID
+      if (isAllSelected) return true; // show all when "All Items" selected
+      return String(item.categoryid) === String(selectedCategory);
     })
     .filter(item => 
-      item.name.toLowerCase().includes(searchText.toLowerCase())
+      (item.name || '').toLowerCase().includes(searchText.toLowerCase())
     );
 
   return (
